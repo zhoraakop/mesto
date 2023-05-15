@@ -1,0 +1,9 @@
+.profile-info__button{
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    margin-left: 18px;
+    background-color: black;
+    border: 1px solid white;
+    align-self: flex-end;
+}
