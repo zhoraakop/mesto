@@ -9,5 +9,11 @@
     background-size: cover;
     position: absolute;
     right: -30px;
-    top: -30px
+    top: -30px;
+    transition: opacity .2s linear;
+    cursor: pointer;
+}
+
+.popup__close-button:hover{
+    opacity: .8;
 }

@@ -3,7 +3,13 @@
     width: 24px;
     height: 24px;
     margin-left: 18px;
+    margin-top: 15px;
     background-color: black;
     border: 1px solid white;
-    align-self: flex-end;
+    transition: opacity .2s linear;
+    cursor: pointer;
+}
+
+.profile-info__button:hover{
+    opacity: .8;
 }
