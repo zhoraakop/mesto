@@ -4,3 +4,9 @@
     position: absolute;
     bottom: 0;
 }
+
+@media screen and (max-width: 767px) {
+    .line{
+        max-width: 320px;
+    }
+}

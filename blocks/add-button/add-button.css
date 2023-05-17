@@ -8,8 +8,15 @@
     align-self: center;
     transition: opacity .2s linear;
     cursor: pointer;
+    padding: 0;
 }
 
 .add-button:hover{
     opacity: .8;
+}
+
+@media screen and (max-width: 767px) {
+    .add-button{
+        width: 100%;
+    }
 }

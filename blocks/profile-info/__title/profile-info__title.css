@@ -9,3 +9,14 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@media screen and (max-width: 767px) {
+    .profile-info__title{
+        max-width: 189px;
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+        margin-left: 46px;
+    }
+}
