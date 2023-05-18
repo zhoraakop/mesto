@@ -7,3 +7,10 @@
     padding-bottom: 13px;
     margin-top: 54px;
 }
+
+@media screen and (max-width: 767px) {
+    .input__title{
+        margin-top: 75px;
+    }
+    
+}

@@ -8,6 +8,9 @@
     border: 1px solid white;
     transition: opacity .2s linear;
     cursor: pointer;
+    background-image: url(../../../images/Edit-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .profile-info__button:hover{
@@ -19,5 +22,7 @@
         width: 18px;
         height: 18px;
         margin-left: 10px;
+        margin-top: 8px;
+        margin-right: 19px;
     }
 }
