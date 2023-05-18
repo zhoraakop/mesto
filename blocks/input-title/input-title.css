@@ -1,4 +1,4 @@
-.input__title{
+.input-title{
     padding: 0;
     max-height: 14px;
     font-weight: 400;
@@ -6,11 +6,17 @@
     line-height: 17px;
     padding-bottom: 13px;
     margin-top: 54px;
+    border: 0;
+    outline: none;
+    width: 358px;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 767px) {
-    .input__title{
+    .input-title{
         margin-top: 75px;
+        width: 238px;
     }
     
 }

@@ -1,4 +1,11 @@
-.input{
+.input-subtitle{
+    padding: 0;
+    max-height: 14px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 13px;
+    margin-top: 30px;
     border: 0;
     outline: none;
     width: 358px;
@@ -7,7 +14,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .input{
+    .input-subtitle{
         width: 238px;
     }
     
