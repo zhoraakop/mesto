@@ -1,13 +1,12 @@
 .popup__form{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, min-content);
+    grid-template-rows: repeat(3, min-content);
+    gap: 0;
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-between;
-    background-color: white;
     width: 358px;
-    height: 100%;
     margin: 0 auto;
 }
 

@@ -9,8 +9,10 @@
     transition: opacity .2s linear;
     cursor: pointer;
     background-image: url(../../../images/Edit-button.svg);
+    background-size: 10px 10px;
     background-repeat: no-repeat;
     background-position: center;
+    padding: 0;
 }
 
 .profile-info__button:hover{
@@ -19,6 +21,7 @@
 
 @media screen and (max-width: 767px) {
     .profile-info__button{
+        background-size: 7.5px 7.5px;
         width: 18px;
         height: 18px;
         margin-left: 10px;

@@ -8,6 +8,8 @@
     transition: opacity .2s linear;
     background-image: url(../../../images/like.svg);
     background-size: cover;
+    border: 0;
+    background-color: white;
 }
 
 .element__like:hover{

@@ -8,8 +8,8 @@
     background-color: transparent;
     background-size: cover;
     position: absolute;
-    right: -30px;
-    top: -30px;
+    right: -40px;
+    top: -40px;
     transition: opacity .2s linear;
     cursor: pointer;
 }

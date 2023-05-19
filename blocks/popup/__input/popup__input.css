@@ -1,11 +1,11 @@
-.input-subtitle{
+.popup__input{
     padding: 0;
     max-height: 14px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     padding-bottom: 13px;
-    margin-top: 30px;
+    margin-top: 54px;
     border: 0;
     outline: none;
     width: 358px;
@@ -13,8 +13,13 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.popup__input:last-of-type{
+    margin-top: 30px;
+}
+
 @media screen and (max-width: 767px) {
-    .input-subtitle{
+    .popup__input{
+        margin-top: 75px;
         width: 238px;
     }
     

@@ -11,65 +11,64 @@
   <body class="page">
     <header class="header">
       <img class="logo" src="./images/logo.svg" alt="Место">
-      <img class="line" src="./images/Line.svg">
     </header>
     <main class="content">
       <section class="profile">
-        <img class="avatar" src="./images/image.jpg" alt="Кнопка-редактировать">
+        <img class="profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
         <div class="profile-info">
           <h1 class="profile-info__title">Жак-Ив Кусто</h1>
-          <button class="profile-info__button"></button>
+          <button class="profile-info__button" type="button"></button>
           <p class="profile-info__subtitle">Исследователь океана</p>
-          <div class="popup">
-            <div class="popup__content">
-              <form class="popup__form">
-                <h2 class="popup__form-title">Редактировать профиль</h2>
-                <input type="text" class="input-title" >
-                <input type="text" class="input-subtitle" >
-                <button type="submit" class="button">Сохранить</button>
-              </form>
-              <button class="popup__close-button"></button>
-            </div>
-          </div>
         </div>
-
-        <button class="add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
         <div class="element">
           <img class="element__image" src="./images/kamchatka.jpg" alt="Камчатка">
           <h2 class="element__title">Камчатка</h2>
-          <div id="element-like-1" class="element__like"></div>
+          <button id="element-like-1" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Italy.jpg" alt="Италия">
           <h2 class="element__title">Италия</h2>
-          <div id="element-like-2" class="element__like"></div>
+          <button id="element-like-2" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Lastochkino-gnezdo.jpg" alt="Ласточкино-гнездо">
           <h2 class="element__title">Ласточкино гнездо</h2>
-          <div id="element-like-3" class="element__like"></div>
+          <button id="element-like-3" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Neuschwanstein-Castle.jpg" alt="Замок Нойшванштайн">
           <h2 class="element__title">Замок Нойшванштайн</h2>
-          <div id="element-like-4" class="element__like"></div>
+          <button id="element-like-4" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/China.jpg" alt="Китай">
           <h2 class="element__title">Китай</h2>
-          <div id="element-like-5" class="element__like"></div>
+          <button id="element-like-5" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Switzerland.jpg" alt="Швейцария">
           <h2 class="element__title">Швейцария</h2>
-          <div id="element-like-6" class="element__like"></div>
+          <button id="element-like-6" class="element__like"></button>
         </div>
       </section>
-      <footer class="footer">
+    </main>
+    <footer class="footer">
         <p class="footer__title">© 2023 Mesto Russia</p>
       </footer>
-    </main>
+    <div class="popup">
+        <div class="popup__content">
+          <h2 class="popup__content-title">Редактировать профиль</h2>  
+          <form class="popup__form">
+            
+            <input id="input-title" type="text" class="popup__input" placeholder="" name="имя">
+            <input id="input-subtitle" type="text" class="popup__input" name="информация">
+            <button type="submit" class="popup__button" type="submit">Сохранить</button>
+          </form>
+          <button class="popup__close-button" type="button"></button>
+        </div>
+      </div>
   </body>
 </html>
