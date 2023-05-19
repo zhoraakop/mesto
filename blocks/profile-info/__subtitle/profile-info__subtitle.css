@@ -10,6 +10,15 @@
     overflow: hidden;
 }
 
+@media screen and (max-width: 1023px) {
+    .profile-info__subtitle{
+        width: 231px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    
+}
+
 @media screen and (max-width: 767px) {
     .profile-info__subtitle{
         width: 282px;
