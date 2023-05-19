@@ -8,6 +8,7 @@
 
 @media screen and (max-width: 767px) {
     .profile{
+        max-height: 286px;
         max-width: 282px;
         flex-wrap: wrap;
         justify-content: center;

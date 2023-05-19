@@ -8,7 +8,7 @@ const profileSubtitle = document.querySelector('.profile-info__subtitle');
 const popupForm = document.querySelector('.popup__form');
 
 openPopup.addEventListener('click', function(){
-    editPopup.classList.add('popup__is-opened');
+    editPopup.classList.add('popup_opened');
     inputTitle.value = profileTitle.textContent;
     inputSubtitle.value = profileSubtitle.textContent;
     
@@ -26,7 +26,7 @@ popupForm.addEventListener('submit', function(text){
 });
 
 function remove(element){
-    element.classList.remove('popup__is-opened');
+    element.classList.remove('popup_opened');
 }
 
 
