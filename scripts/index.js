@@ -15,18 +15,18 @@ openPopup.addEventListener('click', function(){
 });
 
 closePopup.addEventListener('click', function(){
-    remove(editPopup)
+    closepopup(editPopup)
 });
 
 popupForm.addEventListener('submit', function(text){
     text.preventDefault();
-    remove(editPopup);
+    closepopup(editPopup);
     profileTitle.textContent = inputTitle.value
     profileSubtitle.textContent = inputSubtitle.value;
 });
 
-function remove(element){
+function closepopup(element){
     element.classList.remove('popup_opened');
-}
+};
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <link rel="stylesheet" href="./pages/index.css" >
-    <script src="./pages/index.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
     <title>mesto</title>
   </head>
   <body class="page">
@@ -26,32 +26,32 @@
         <div class="element">
           <img class="element__image" src="./images/kamchatka.jpg" alt="Камчатка">
           <h2 class="element__title">Камчатка</h2>
-          <button id="element-like-1" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Italy.jpg" alt="Италия">
           <h2 class="element__title">Италия</h2>
-          <button id="element-like-2" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Lastochkino-gnezdo.jpg" alt="Ласточкино-гнездо">
           <h2 class="element__title">Ласточкино гнездо</h2>
-          <button id="element-like-3" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Neuschwanstein-Castle.jpg" alt="Замок Нойшванштайн">
           <h2 class="element__title">Замок Нойшванштайн</h2>
-          <button id="element-like-4" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/China.jpg" alt="Китай">
           <h2 class="element__title">Китай</h2>
-          <button id="element-like-5" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Switzerland.jpg" alt="Швейцария">
           <h2 class="element__title">Швейцария</h2>
-          <button id="element-like-6" class="element__like"></button>
+          <button type="button" class="element__like"></button>
         </div>
       </section>
     </main>
@@ -60,11 +60,11 @@
       </footer>
     <div class="popup">
         <div class="popup__content">
-          <h2 class="popup__content-title">Редактировать профиль</h2>  
-          <form class="popup__form">
+          <h2 class="popup__content_title">Редактировать профиль</h2>  
+          <form class="popup__form" name="form">
             
-            <input id="input-title" type="text" class="popup__input" placeholder="" name="имя">
-            <input id="input-subtitle" type="text" class="popup__input" name="информация">
+            <input id="input-title" type="text" class="popup__input" placeholder="имя" name="name">
+            <input id="input-subtitle" type="text" class="popup__input" name="information" placeholder="информация">
             <button type="submit" class="popup__button">Сохранить</button>
           </form>
           <button class="popup__close-button" type="button"></button>
