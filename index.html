@@ -27,48 +27,66 @@
           <img class="element__image" src="./images/kamchatka.jpg" alt="Камчатка">
           <h2 class="element__title">Камчатка</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Italy.jpg" alt="Италия">
           <h2 class="element__title">Италия</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Lastochkino-gnezdo.jpg" alt="Ласточкино-гнездо">
           <h2 class="element__title">Ласточкино гнездо</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Neuschwanstein-Castle.jpg" alt="Замок Нойшванштайн">
           <h2 class="element__title">Замок Нойшванштайн</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/China.jpg" alt="Китай">
           <h2 class="element__title">Китай</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
         <div class="element">
           <img class="element__image" src="./images/Switzerland.jpg" alt="Швейцария">
           <h2 class="element__title">Швейцария</h2>
           <button type="button" class="element__like"></button>
+          <button type="button" class="element__trash"></button>
         </div>
       </section>
     </main>
     <footer class="footer">
         <p class="footer__title">© 2023 Mesto Russia</p>
       </footer>
-    <div class="popup">
-        <div class="popup__content">
-          <h2 class="popup__title">Редактировать профиль</h2>  
-          <form class="popup__form" name="form">
+    <div class="popup" id="popup-info">
+      <div class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>  
+        <form class="popup__form" name="form">
             
-            <input id="input-title" type="text" class="popup__input" placeholder="имя" name="name">
-            <input id="input-subtitle" type="text" class="popup__input" name="information" placeholder="информация">
-            <button type="submit" class="popup__button">Сохранить</button>
-          </form>
-          <button class="popup__close-button" type="button"></button>
-        </div>
+          <input id="input-title" type="text" class="popup__input" placeholder="имя" name="name">
+          <input id="input-subtitle" type="text" class="popup__input" name="information" placeholder="информация">
+          <button type="submit" class="popup__button">Сохранить</button>
+        </form>
+        <button class="popup__close-button" id="popup__close-button" type="button"></button>
       </div>
+    </div>
+    <div class="popup" id="popup-add">
+      <div class="popup__content">
+        <h2 class="popup__title">Новое место</h2>  
+        <form class="popup__form" name="form">
+            
+          <input id="input-title" type="text" class="popup__input" placeholder="Название" name="name">
+          <input id="input-subtitle" type="text" class="popup__input" name="information" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__button">Создать</button>
+        </form>
+        <button class="popup__close-button" id="popup-add__close-button" type="button"></button>
+      </div>
+    </div>
   </body>
 </html>
