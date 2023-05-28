@@ -22,6 +22,7 @@ const popupAddForm = document.querySelector('#form-add');
 
 const template = document.querySelector('.template');
 const templateContent = template.content;
+const element = templateContent.querySelector('.element');
 const templateContentEl = document.querySelector('.elements');
 
 
@@ -58,7 +59,7 @@ initialCards.forEach(function(item){
 });
 
 function createCards(name, link){
-    const cards = templateContent.cloneNode(true);
+    const cards = element.cloneNode(true);
     const image = cards.querySelector('.element__image');
     const text = cards.querySelector('.element__title');
     image.src = link;
