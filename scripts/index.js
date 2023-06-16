@@ -128,4 +128,15 @@ function closePopup(element){
 function openPopup(element){
     element.classList.add('popup_opened');
 };
+/////////////////////////////////////////////////
+enableValidation = {
+    formSelector: '.popup__form',//formElement
+    inputSelector: '.popup__input',//formInput
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}; 
 
+
+  
