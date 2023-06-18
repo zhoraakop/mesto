@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="stylesheet" href="./pages/index.css" >
-    <script src="./scripts/index.js" defer></script>
+    <link rel="stylesheet" href="./pages/index.css">
     <title>mesto</title>
   </head>
   <body class="page">
@@ -31,8 +30,10 @@
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>  
         <form class="popup__form" name="form" id="form">
-          <input id="input-title" type="text" class="popup__input" placeholder="имя" name="name">
-          <input id="input-subtitle" type="text" class="popup__input" name="information" placeholder="информация">
+          <input id="name" type="text" class="popup__input" placeholder="имя" name="name" required minlength="2" maxlength="40">
+          <span class="name-error popup__input-error" id="name-error"></span>
+          <input id="information" type="text" class="popup__input" name="information" placeholder="информация" required minlength="2" maxlength="200">
+          <span class="information-error popup__input-error" id="information-error"></span>
           <button type="submit" class="popup__button">Сохранить</button>
         </form>
         <button class="popup__close-button" id="popup__close-button" type="button"></button>
@@ -42,9 +43,11 @@
       <div class="popup__content">
         <h2 class="popup__title">Новое место</h2>  
         <form class="popup__form" name="form" id="form-add">
-          <input id="input-title-add" type="text" class="popup__input" placeholder="Название" name="name">
-          <input id="input-subtitle-add" type="text" class="popup__input" name="link" placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__button">Создать</button>
+          <input id="name-card" type="text" class="popup__input" placeholder="Название" name="name-card" required minlength="2" maxlength="30">
+          <span class="name-card-error popup__input-error" id="name-card-error"></span>
+          <input id="url" type="url" class="popup__input" name="link" placeholder="Ссылка на картинку" required>
+          <span class="url-error popup__input-error" id="url-error"></span>
+          <button type="submit" class="popup__button popup__button_disabled">Создать</button>
         </form>
         <button class="popup__close-button" id="popup-add__close-button" type="button"></button>
       </div>
@@ -64,5 +67,7 @@
         <button type="button" class="element__trash"></button>
       </div>
     </template>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
