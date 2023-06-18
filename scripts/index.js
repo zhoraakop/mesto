@@ -8,6 +8,7 @@ const buttonCloseImagePopup = document.querySelector('#popup-image__close-button
 const popupEditProfile = document.querySelector('#popup-info');
 const popupAddCard = document.querySelector('#popup-add');
 const popupImage = document.querySelector('#popup-image');
+const popupButton = document.querySelector('#popup__button-add')
 
 const inputTitle = document.querySelector('#name');
 const inputAddTitle = document.querySelector('#name-card');
@@ -123,6 +124,7 @@ formAddCard.addEventListener('submit', function(text){
     templateContentEl.prepend(newCard);
     inputAddSubtitle.value = '';
     inputAddTitle.value = '';
+    disableButton();
     closePopup(popupAddCard);
 });
 
@@ -146,5 +148,8 @@ function closePopupEscape(e, element){
     }
 }
 
-
+function disableButton() {
+    popupButton.setAttribute('disabled', true); //добавить неактивный добавить атрибут
+    popupButton.classList.add('popup__button_disabled');
+}
   
