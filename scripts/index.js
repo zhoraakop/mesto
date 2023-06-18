@@ -100,7 +100,9 @@ popupImage.addEventListener('mousedown', (e) => {closePopupOverlay(e, popupImage
 
 popupAddCard.addEventListener('mousedown', (e) => {closePopupOverlay(e, popupAddCard)});
 
-buttonOpenAddCardPopup.addEventListener('click', function(){openPopup(popupAddCard)});
+buttonOpenAddCardPopup.addEventListener('click', function(){
+    openPopup(popupAddCard)
+});
 
 buttonCloseImagePopup.addEventListener('click', function(){closePopup(popupImage)});
 
@@ -110,18 +112,18 @@ buttonCloseEditProfilePopup.addEventListener('click', function(){closePopup(popu
 
 formEditProfile.addEventListener('submit', function(text){
     text.preventDefault();
-    closePopup(popupEditProfile);
     profileTitle.textContent = inputTitle.value;
     profileSubtitle.textContent = inputSubtitle.value;
+    closePopup(popupEditProfile);
 });
 
 formAddCard.addEventListener('submit', function(text){
     text.preventDefault();
-    closePopup(popupAddCard);
     const newCard = createCards(inputAddTitle.value, inputAddSubtitle.value);
     templateContentEl.prepend(newCard);
     inputAddSubtitle.value = '';
     inputAddTitle.value = '';
+    closePopup(popupAddCard);
 });
 
 function closePopup(element){
@@ -143,5 +145,6 @@ function closePopupEscape(e, element){
         closePopup(element);
     }
 }
+
 
   

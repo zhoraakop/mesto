@@ -38,10 +38,12 @@ const validators = {
   
   const toggleButtonState = (inputList, buttonEl, validators) => {
     if (hasInvalidInput(inputList)) {
-        buttonEl.classList.add(validators.inactiveButtonClass);
+      buttonEl.setAttribute('disabled', true);
+      buttonEl.classList.add(validators.inactiveButtonClass);
     }   
     else {
-        buttonEl.classList.remove(validators.inactiveButtonClass);
+      buttonEl.removeAttribute('disabled');
+      buttonEl.classList.remove(validators.inactiveButtonClass);
     }
     
   };
@@ -49,7 +51,7 @@ const validators = {
   const setEventListeners = (formEl, validators) => {
     const inputList = Array.from(formEl.querySelectorAll(validators.inputSelector));
     const buttonEl = formEl.querySelector(validators.submitButtonSelector);
-  
+    toggleButtonState(inputList,buttonEl,validators);
     inputList.forEach((inputEl) => {
       inputEl.addEventListener('input', () => {
         checkInputValidity(formEl, inputEl, validators);
@@ -65,4 +67,18 @@ const validators = {
     });
   };
   
+  const enableButton = (formEl, validators) => {
+    const buttonSubmit = formEl.querySelector(
+      validators.submitButtonSelector
+    );
+    buttonSubmit.disabled = false;
+  };
+  
+  const disableButton = (formEl, validators) => {
+    const buttonSubmit = formEl.querySelector(
+      validators.submitButtonSelector
+    );
+    buttonSubmit.disabled = true;
+  };
+
   enableValidation(validators);
