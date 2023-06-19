@@ -53,7 +53,7 @@ const initialCards = [
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+];
 
 initialCards.forEach(function(item){
     const newCards = createCards(item.name, item.link);
@@ -89,13 +89,6 @@ buttonOpenEditProfilePopup.addEventListener('click', function(){
     inputSubtitle.value = profileSubtitle.textContent;  
 });
 
-document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-        closeWithEsc(popupEditProfile);
-        closeWithEsc(popupAddCard);
-        closeWithEsc(popupImage);
-    }
-})
 
 popupEditProfile.addEventListener('mousedown', (e) => {closePopupOverlay(e, popupEditProfile)});
 
@@ -129,12 +122,21 @@ formAddCard.addEventListener('submit', function(text){
     closePopup(popupAddCard);
 });
 
+function closeWithEsc(evt){
+    if (evt.key === 'Escape') {
+        const popup = document.querySelector('.popup_opened');
+        closePopup(popup);
+    };
+} 
+
 function closePopup(element){
     element.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeWithEsc);
 };
 
 function openPopup(element){
     element.classList.add('popup_opened');
+    document.addEventListener('keydown', closeWithEsc);
 };
 
 function closePopupOverlay(e, element){
@@ -142,13 +144,6 @@ function closePopupOverlay(e, element){
         closePopup(element);
     }
 }
-
-function closeWithEsc(element){
-    if(element.classList.contains('popup_opened')){
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
-    }
-} 
 
 function disableButton() {
     popupButton.setAttribute('disabled', true);
