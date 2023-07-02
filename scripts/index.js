@@ -1,5 +1,7 @@
 import { Card } from "./Card.js";
 import { initialCards } from "./InitialCard.js";
+import { FormValidator } from "./validate.js";
+import { validators } from "./validators.js";
 
 const buttonOpenEditProfilePopup = document.querySelector('.profile-info__button');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
@@ -55,6 +57,11 @@ formEditProfile.addEventListener('submit', function(text){
     
 });
 
+initialCards.forEach(function(item){
+    const newCards = createCard(item.name, item.link, '.template');
+    templateContentEl.prepend(newCards);
+});
+
 formAddCard.addEventListener('submit', function(text){
     text.preventDefault();
     const newCard = createCard(inputAddTitle.value, inputAddSubtitle.value, '.template');
@@ -96,7 +103,4 @@ function createCard(name, link, template){
     return new Card(name, link, template).createCards();
 }
 
-initialCards.forEach(function(item){
-    const newCards = createCard(item.name, item.link, '.template');
-    templateContentEl.prepend(newCards);
-});
+new FormValidator(validators).enableValidation();
