@@ -1,7 +1,7 @@
 export class FormValidator{
   constructor(validators){
     this.validators = validators;
-    this.formList = Array.from(document.querySelectorAll(validators.formSelector));
+    this.formList = Array.from(document.querySelectorAll(this.validators.formSelector));
   }
 
   enableValidation(){
@@ -11,12 +11,12 @@ export class FormValidator{
   }
 
   _setEventListeners(formEl, validators){
-    const inputList = Array.from(formEl.querySelectorAll(validators.inputSelector));
-    const buttonEl = formEl.querySelector(validators.submitButtonSelector);
+    const inputList = Array.from(formEl.querySelectorAll(this.validators.inputSelector));
+    const buttonEl = formEl.querySelector(this.validators.submitButtonSelector);
     inputList.forEach((inputEl) => {
       inputEl.addEventListener('input', () => {
-        this._checkInputValidity(formEl, inputEl, validators);
-        this._toggleButtonState(inputList,buttonEl,validators);
+        this._checkInputValidity(formEl, inputEl, this.validators);
+        this._toggleButtonState(inputList,buttonEl,this.validators);
       });
     });
   };
@@ -24,22 +24,22 @@ export class FormValidator{
     const errorEl = formEl.querySelector(`.${inputEl.id}-error`);
     
     if (!inputEl.validity.valid) {
-      this._showInputError(inputEl, errorEl, validators);
+      this._showInputError(inputEl, errorEl, this.validators);
     } 
     else {
-      this._hideInputError(inputEl, errorEl, validators);
+      this._hideInputError(inputEl, errorEl, this.validators);
     }
   };
     
   _showInputError(inputEl, errorEl, validators){
-      inputEl.classList.add(validators.inputErrorClass);
+      inputEl.classList.add(this.validators.inputErrorClass);
       errorEl.textContent = inputEl.validationMessage;
-      errorEl.classList.add(validators.errorClass);
+      errorEl.classList.add(this.validators.errorClass);
     };
   
   _hideInputError(inputEl, errorEl, validators){
-      inputEl.classList.remove(validators.inputErrorClass);
-      errorEl.classList.remove(validators.errorClass);
+      inputEl.classList.remove(this.validators.inputErrorClass);
+      errorEl.classList.remove(this.validators.errorClass);
       errorEl.textContent = '';
   };
     
@@ -52,11 +52,11 @@ export class FormValidator{
   _toggleButtonState(inputList, buttonEl, validators){
     if (this._hasInvalidInput(inputList)) {
       buttonEl.setAttribute('disabled', true);
-      buttonEl.classList.add(validators.inactiveButtonClass);
+      buttonEl.classList.add(this.validators.inactiveButtonClass);
     }   
     else {
       buttonEl.removeAttribute('disabled');
-      buttonEl.classList.remove(validators.inactiveButtonClass);
+      buttonEl.classList.remove(this.validators.inactiveButtonClass);
     }    
   };
 }
