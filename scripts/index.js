@@ -41,8 +41,9 @@ popupImage.addEventListener('mousedown', (e) => {closePopupOverlay(e, popupImage
 
 popupAddCard.addEventListener('mousedown', (e) => {closePopupOverlay(e, popupAddCard)});
 
-buttonOpenAddCardPopup.addEventListener('click', function(){openPopup(popupAddCard)});
-
+buttonOpenAddCardPopup.addEventListener('click', function(){
+    openPopup(popupAddCard)
+});
 buttonCloseImagePopup.addEventListener('click', function(){closePopup(popupImage)});
 
 buttonCloseAddCardPopup.addEventListener('click', function(){closePopup(popupAddCard)});
@@ -68,7 +69,7 @@ formAddCard.addEventListener('submit', function(text){
     templateContentEl.prepend(newCard);
     inputAddSubtitle.value = '';
     inputAddTitle.value = '';
-    disableButton();
+    
     closePopup(popupAddCard);
 });
 
@@ -95,12 +96,8 @@ function closePopupOverlay(e, element){
     }
 }
 
-function disableButton() {
-    popupButton.setAttribute('disabled', true);
-    popupButton.classList.add('popup__button_disabled');
-}
 function createCard(name, link, template){
     return new Card(name, link, template).createCards();
 }
-
-new FormValidator(validators).enableValidation();
+new FormValidator(validators, formEditProfile).enableValidation();
+new FormValidator(validators, formAddCard).enableValidation();
