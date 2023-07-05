@@ -28,6 +28,9 @@ const formAddCard = document.querySelector('#form-add');
 
 const templateContentEl = document.querySelector('.elements');
 
+const profileForm = new FormValidator(validators, formEditProfile);
+const addForm = new FormValidator(validators, formAddCard);
+
 buttonOpenEditProfilePopup.addEventListener('click', function(){
     openPopup(popupEditProfile);
     inputTitle.value = profileTitle.textContent;
@@ -48,7 +51,13 @@ buttonCloseImagePopup.addEventListener('click', function(){closePopup(popupImage
 
 buttonCloseAddCardPopup.addEventListener('click', function(){closePopup(popupAddCard)});
 
-buttonCloseEditProfilePopup.addEventListener('click', function(){closePopup(popupEditProfile)});
+buttonCloseEditProfilePopup.addEventListener('click', function(){
+    closePopup(popupEditProfile);
+    profileForm.resetValidation();
+});
+
+profileForm.enableValidation();
+addForm.enableValidation();
 
 formEditProfile.addEventListener('submit', function(text){
     text.preventDefault();
@@ -57,6 +66,7 @@ formEditProfile.addEventListener('submit', function(text){
     closePopup(popupEditProfile);
     
 });
+
 
 initialCards.forEach(function(item){
     const newCards = createCard(item.name, item.link, '.template');
@@ -69,7 +79,7 @@ formAddCard.addEventListener('submit', function(text){
     templateContentEl.prepend(newCard);
     inputAddSubtitle.value = '';
     inputAddTitle.value = '';
-    
+    addForm.disableButton();
     closePopup(popupAddCard);
 });
 
@@ -99,5 +109,3 @@ function closePopupOverlay(e, element){
 function createCard(name, link, template){
     return new Card(name, link, template).createCards();
 }
-new FormValidator(validators, formEditProfile).enableValidation();
-new FormValidator(validators, formAddCard).enableValidation();

@@ -1,4 +1,6 @@
 import { openPopup, popupImage } from "./index.js";
+const popupImageEl = document.querySelector('#popup-image').querySelector('.popup__image-content');
+const popupTitle = document.querySelector('#popup-image').querySelector('.popup__image-title');
 
 export class Card {
     constructor(name, link, template){
@@ -6,8 +8,6 @@ export class Card {
         this.name = name;
         this.link = link;
         this.section = document.querySelector('.elements');
-        this.popupImageEl = document.querySelector('#popup-image').querySelector('.popup__image-content');
-        this.popupTitle = document.querySelector('#popup-image').querySelector('.popup__image-title');
     };
     
     createCards(){
@@ -15,6 +15,7 @@ export class Card {
         this._imageCards = this.cardsEl.querySelector('.element__image');
         this._textCards = this.cardsEl.querySelector('.element__title');
         this._imageCards.src = this.link;
+        this._imageCards.alt = 'Картинка';
         this._textCards.textContent = this.name;
         this._deleteButton = this.cardsEl.querySelector('.element__trash');
         this._likeButton = this.cardsEl.querySelector('.element__like');
@@ -35,7 +36,7 @@ export class Card {
     }
 
     _deleteCard(){
-        this.section.removeChild(this.cardsEl);
+        this.cardsEl.remove();
     };
 
     _likeCard(event){
@@ -43,10 +44,10 @@ export class Card {
     }
 
     _openCard(){
-        this.popupImageEl.src = this._imageCards.src;
-        this.popupImageEl.alt = this._imageCards.alt;
-        this.popupTitle.textContent = this._textCards.textContent;
+        popupImageEl.src = this._imageCards.src;
+        popupImageEl.alt = this._imageCards.alt;
+        popupTitle.textContent = this._textCards.textContent;
         openPopup(popupImage);
     }
-
+  
 }
