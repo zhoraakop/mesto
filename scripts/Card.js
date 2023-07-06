@@ -1,13 +1,10 @@
-import { openPopup, popupImage } from "./index.js";
-const popupImageEl = document.querySelector('#popup-image').querySelector('.popup__image-content');
-const popupTitle = document.querySelector('#popup-image').querySelector('.popup__image-title');
+import { openPopup, popupImage, popupImageEl, popupTitle } from "./index.js";
 
 export class Card {
     constructor(name, link, template){
         this.template = document.querySelector(template).content.querySelector('.element');
         this.name = name;
         this.link = link;
-        this.section = document.querySelector('.elements');
     };
     
     createCards(){
@@ -15,7 +12,7 @@ export class Card {
         this._imageCards = this.cardsEl.querySelector('.element__image');
         this._textCards = this.cardsEl.querySelector('.element__title');
         this._imageCards.src = this.link;
-        this._imageCards.alt = 'Картинка';
+        this._imageCards.alt = this.name;
         this._textCards.textContent = this.name;
         this._deleteButton = this.cardsEl.querySelector('.element__trash');
         this._likeButton = this.cardsEl.querySelector('.element__like');

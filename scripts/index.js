@@ -13,7 +13,6 @@ const buttonCloseImagePopup = document.querySelector('#popup-image__close-button
 const popupEditProfile = document.querySelector('#popup-info');
 export const popupAddCard = document.querySelector('#popup-add');
 export const popupImage = document.querySelector('#popup-image');
-const popupButton = document.querySelector('#popup__button-add')
 
 const inputTitle = document.querySelector('#name');
 const inputAddTitle = document.querySelector('#name-card');
@@ -26,15 +25,19 @@ const profileSubtitle = document.querySelector('.profile-info__subtitle');
 const formEditProfile = document.querySelector('#form');
 const formAddCard = document.querySelector('#form-add');
 
+export const popupImageEl = popupImage.querySelector('.popup__image-content');
+export const popupTitle = popupImage.querySelector('.popup__image-title');
+
 const templateContentEl = document.querySelector('.elements');
 
-const profileForm = new FormValidator(validators, formEditProfile);
-const addForm = new FormValidator(validators, formAddCard);
+const profileFormValidator  = new FormValidator(validators, formEditProfile);
+const addFormValidator = new FormValidator(validators, formAddCard);
 
 buttonOpenEditProfilePopup.addEventListener('click', function(){
     openPopup(popupEditProfile);
     inputTitle.value = profileTitle.textContent;
-    inputSubtitle.value = profileSubtitle.textContent;  
+    inputSubtitle.value = profileSubtitle.textContent; 
+    profileFormValidator.resetValidation(); 
 });
 
 
@@ -51,13 +54,10 @@ buttonCloseImagePopup.addEventListener('click', function(){closePopup(popupImage
 
 buttonCloseAddCardPopup.addEventListener('click', function(){closePopup(popupAddCard)});
 
-buttonCloseEditProfilePopup.addEventListener('click', function(){
-    closePopup(popupEditProfile);
-    profileForm.resetValidation();
-});
+buttonCloseEditProfilePopup.addEventListener('click', function(){closePopup(popupEditProfile);});
 
-profileForm.enableValidation();
-addForm.enableValidation();
+profileFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 formEditProfile.addEventListener('submit', function(text){
     text.preventDefault();
@@ -79,7 +79,7 @@ formAddCard.addEventListener('submit', function(text){
     templateContentEl.prepend(newCard);
     inputAddSubtitle.value = '';
     inputAddTitle.value = '';
-    addForm.disableButton();
+    addFormValidator.disableButton();
     closePopup(popupAddCard);
 });
 
