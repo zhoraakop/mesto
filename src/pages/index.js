@@ -9,17 +9,13 @@ import { Popup } from "../components/popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
-
-const buttonOpenEditProfilePopup = document.querySelector('.profile-info__button');
-const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
-
-const inputsValue = {
-    name: document.querySelector('#name'),
-    information: document.querySelector('#information')
-};
-
-const formEditProfile = document.querySelector('#form');
-const formAddCard = document.querySelector('#form-add');
+import { 
+    buttonOpenAddCardPopup,
+    buttonOpenEditProfilePopup,
+    formAddCard,
+    formEditProfile,
+    inputsValue
+ } from '../utils/constants.js';
 
 const userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle');
 const profilePopup = new Popup('#popup-info');
