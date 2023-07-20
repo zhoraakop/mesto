@@ -1,10 +1,10 @@
-import { openPopup, popupImage, popupImageEl, popupTitle } from "./index.js";
 
 export class Card {
-    constructor(name, link, template){
+    constructor(card, template, imagePopup){
         this.template = document.querySelector(template).content.querySelector('.element');
-        this.name = name;
-        this.link = link;
+        this._imagePopup = imagePopup;
+        this.name = card.name;
+        this.link = card.link;
     };
     
     createCards(){
@@ -28,7 +28,7 @@ export class Card {
             this._likeCard(event);
         });
         this._imageCards.addEventListener('click', () => {
-            this._openCard();
+            this._imagePopup(this.name, this.link);
         });
     }
 
@@ -40,11 +40,5 @@ export class Card {
         event.target.classList.toggle('element__like_active');
     }
 
-    _openCard(){
-        popupImageEl.src = this._imageCards.src;
-        popupImageEl.alt = this._imageCards.alt;
-        popupTitle.textContent = this._textCards.textContent;
-        openPopup(popupImage);
-    }
   
 }
