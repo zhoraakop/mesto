@@ -1,3 +1,5 @@
+
+
 export class FormValidator{
   constructor(validators, form){
     this._validators = validators;
@@ -12,7 +14,7 @@ export class FormValidator{
 
   disableButton() {
     this._buttonEl.setAttribute('disabled', true);
-    this._buttonEl.classList.add('popup__button_disabled');
+    this._buttonEl.classList.add(this._validators.inactiveButtonClass);
   }
 
   _setEventListeners(){

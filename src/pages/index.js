@@ -5,7 +5,7 @@ import { initialCards } from "../utils/InitialCard.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { validators } from "../utils/validators.js";
 import { Section } from "../components/Section.js";
-import { Popup } from "../components/popup.js";
+import { Popup } from "../components/Popup.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -39,6 +39,7 @@ addPopup.setEventListeners();
 imagePopup.setEventListeners();
 buttonOpenAddCardPopup.addEventListener('click', function(){
     addForm.open();
+    addFormValidator.disableButton();
 });
 
 profileFormValidator.enableValidation();
