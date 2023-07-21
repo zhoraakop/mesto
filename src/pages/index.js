@@ -37,19 +37,12 @@ section.renderItems();
 profilePopup.setEventListeners();
 addPopup.setEventListeners();
 imagePopup.setEventListeners();
-buttonOpenAddCardPopup.addEventListener('click', function(){
-    addForm.open();
-    addFormValidator.disableButton();
-});
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 const editForm = new PopupWithForm('#popup-info', (list) => {
-    userInfo.setUserInfo({
-        name: list.name,
-        information: list.information,
-    })
+    userInfo.setUserInfo(list)
     editForm.close();
     
 })
@@ -64,15 +57,16 @@ buttonOpenEditProfilePopup.addEventListener('click', function(){
 editForm.setEventListeners();
 
 const addForm = new PopupWithForm('#popup-add', (list) => {
-    const card = {
-        name: list.cardName,
-        link: list.link,
-    };
+    const card = (list);
     const newCard = createCard(card);
     section.addItem(newCard);
     addFormValidator.disableButton();
     addForm.close();
 })
+buttonOpenAddCardPopup.addEventListener('click', function(){
+    addForm.open();
+    addFormValidator.disableButton();
+});
 addForm.setEventListeners();
 
 function handleCardClick(name, link){
