@@ -1,0 +1,12 @@
+.popup__delete{
+    display: grid;
+    width: 358px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-rows: repeat(2, 90.5px);
+    justify-content: space-between;
+    position: relative;
+    align-items: start;
+    justify-content: start;
+}

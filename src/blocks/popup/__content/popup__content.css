@@ -8,6 +8,14 @@
 
 }
 
+#popup-trash .popup__content{
+    height: 181px;
+}
+
+#popup-avatar .popup__content{
+    height: 272px;
+}
+
 @media screen and (max-width: 767px) {
     .popup__content{
         width: 282px;

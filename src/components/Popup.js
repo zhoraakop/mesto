@@ -1,8 +1,7 @@
-import { addFormValidator } from "../pages/index.js";
+
 
 export class Popup{
     constructor(Selector){
-        this._check = Selector;
         this._selector = document.querySelector(Selector);
     }
 

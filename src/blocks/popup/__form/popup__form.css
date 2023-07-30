@@ -10,6 +10,10 @@
     margin: 0 auto;
 }
 
+#popup-avatar .popup__form{
+    grid-template-rows: repeat(2, min-content);
+}
+
 @media screen and (max-width: 767px) {
     .popup__form{
         width: 238px;

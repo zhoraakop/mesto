@@ -1,4 +1,4 @@
-
+import { trashPopup } from "../pages/index.js";
 export class Card {
     constructor(card, template, imagePopup){
         this.template = document.querySelector(template).content.querySelector('.element');
@@ -22,7 +22,13 @@ export class Card {
     
     _setEventListeners(){
         this._deleteButton.addEventListener('click', () => {
-            this._deleteCard();
+            trashPopup.open();
+            const _trash = document.querySelector('#popup__button-trash');
+            _trash.addEventListener('click', (evt) =>{
+                this._deleteCard();
+                trashPopup.close();
+            })
+            trashPopup.setEventListeners();
         });
         this._likeButton.addEventListener('click', (event) => {
             this._likeCard(event);

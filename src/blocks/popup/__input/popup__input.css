@@ -12,6 +12,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+#popup-avatar .popup__input{
+    margin-top: 48px;
+}
 
 .popup__input:last-of-type{
     margin-top: -5px;

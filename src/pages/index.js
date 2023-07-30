@@ -14,15 +14,20 @@ import {
     buttonOpenEditProfilePopup,
     formAddCard,
     formEditProfile,
-    inputsValue
+    inputsValue,
+    buttonAvatar,
+    formAvatar
  } from '../utils/constants.js';
 
 const userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle');
 const profilePopup = new Popup('#popup-info');
 const addPopup = new Popup('#popup-add');
+const avatarPopup = new Popup('#popup-avatar');
+export const trashPopup = new Popup('#popup-trash');
 const imagePopup = new PopupWithImage('#popup-image');
 const profileFormValidator  = new FormValidator(validators, formEditProfile);
 export const addFormValidator = new FormValidator(validators, formAddCard);
+const avatarFormValidator = new FormValidator(validators, formAvatar);
 
 const section = new Section({items: initialCards,
     renderer: item => {
@@ -37,9 +42,11 @@ section.renderItems();
 profilePopup.setEventListeners();
 addPopup.setEventListeners();
 imagePopup.setEventListeners();
+avatarPopup.setEventListeners();
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const editForm = new PopupWithForm('#popup-info', (list) => {
     userInfo.setUserInfo(list)
@@ -68,6 +75,18 @@ buttonOpenAddCardPopup.addEventListener('click', function(){
     addFormValidator.disableButton();
 });
 addForm.setEventListeners();
+
+const avatarForm = new PopupWithForm('#popup-avatar', (list) => {
+    const link = document.querySelector('.profile__avatar');
+    link.src = list.src;
+    avatarForm.close();
+})
+
+buttonAvatar.addEventListener('click', function(){
+    avatarForm.open();
+    avatarFormValidator.resetValidation();
+})
+avatarForm.setEventListeners();
 
 function handleCardClick(name, link){
     imagePopup.open({name, link});
