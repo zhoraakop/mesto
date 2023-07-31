@@ -12,7 +12,7 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто">
+        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто" name="profileAvatar">
         <button class="profile__avatar-button"></button>
         <div class="profile-info">
           <h1 class="profile-info__title">Жак-Ив Кусто</h1>
@@ -30,8 +30,8 @@
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>  
         <form class="popup__form" name="form" id="form">
-          <input id="name" type="text" class="popup__input" placeholder="имя" name="name" required minlength="2" maxlength="40">
-          <span class="name-error popup__input-error" id="name-error"></span>
+          <input id="nameProfile" type="text" class="popup__input" placeholder="имя" name="nameProfile" required minlength="2" maxlength="40">
+          <span class="nameProfile-error popup__input-error" id="nameProfile-error"></span>
           <input id="information" type="text" class="popup__input" name="information" placeholder="информация" required minlength="2" maxlength="200">
           <span class="information-error popup__input-error" id="information-error"></span>
           <button type="submit" class="popup__button">Сохранить</button>
@@ -72,7 +72,7 @@
       <div class="popup__content">
         <h2 class="popup__title">Обновить аватар</h2>
         <form class="popup__form" id="form-avatar" name="form" novalidate>
-          <input id="link" type="url" class="popup__input" name="link-avatar" placeholder="Введите ссылку на новый аватар." required>
+          <input id="link" type="url" class="popup__input" name="link" placeholder="Введите ссылку на новый аватар." required>
           <span class="link-error popup__input-error" id="link-error"></span>
           <button type="submit" class="popup__button" id="popup__button-avatar">Сохранить</button>
         </form>

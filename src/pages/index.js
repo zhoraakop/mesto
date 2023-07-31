@@ -18,8 +18,13 @@ import {
     buttonAvatar,
     formAvatar
  } from '../utils/constants.js';
+import Api from '../components/Api.js';
 
-const userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle');
+const api = new Api({
+    baseUrl:'https://mesto.nomoreparties.co/v1/cohort-72',
+    token: 'a81cafc2-2241-4342-a96b-9e7db132c0d1'
+});
+const userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle', '.profile__avatar');
 const profilePopup = new Popup('#popup-info');
 const addPopup = new Popup('#popup-add');
 const avatarPopup = new Popup('#popup-avatar');
@@ -33,10 +38,9 @@ const section = new Section({items: initialCards,
     renderer: item => {
         section.addItem(createCard(item));
     }
-    },
-    '.elements');
+},
+'.elements');
 section.renderItems();
-
 
 
 profilePopup.setEventListeners();
@@ -57,7 +61,7 @@ const editForm = new PopupWithForm('#popup-info', (list) => {
 buttonOpenEditProfilePopup.addEventListener('click', function(){
     editForm.open();
     const profileData = userInfo.getUserInfo();
-    inputsValue.name.value = profileData.name;
+    inputsValue.nameProfile.value = profileData.nameProfile;
     inputsValue.information.value = profileData.information;
     profileFormValidator.resetValidation(); 
 });
@@ -78,6 +82,7 @@ addForm.setEventListeners();
 
 const avatarForm = new PopupWithForm('#popup-avatar', (list) => {
     const link = document.querySelector('.profile__avatar');
+    console.log(link.textContent);
     link.src = list.src;
     avatarForm.close();
 })

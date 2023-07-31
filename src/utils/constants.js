@@ -3,7 +3,7 @@ const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
 const buttonTrash = document.querySelector('.element__trash')
 const buttonAvatar = document.querySelector('.profile__avatar-button');
 const inputsValue = {
-    name: document.querySelector('#name'),
+    nameProfile: document.querySelector('#nameProfile'),
     information: document.querySelector('#information')
 };
 
