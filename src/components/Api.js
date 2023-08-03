@@ -1,4 +1,4 @@
-export default class Api{
+export class Api{
     constructor(options){
         this._url = options.baseUrl;
         this._token = options.token;
@@ -17,7 +17,7 @@ export default class Api{
                 authorization: this._token
             }
 
-        }).then(this._check())
+        }).then(res => this._check(res))
     }
 
     getInitialCards(){
@@ -25,10 +25,10 @@ export default class Api{
             headers: {
                 authorization: this._token
             }
-        }).then(this._check())
+        }).then(res => this._check(res))
     }
 
-    editProfile(){
+    editProfile(nameProfile, information){
         return fetch(`${this._url}/users/me`,{
             method: "PATCH",
             headers: {
@@ -39,7 +39,7 @@ export default class Api{
                 name: nameProfile,
                 about: information
             })
-        }).then(this._check())
+        }).then(res => this._check(res))
     }
 
     postCards(){

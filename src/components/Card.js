@@ -3,7 +3,7 @@ export class Card {
     constructor(card, template, imagePopup){
         this.template = document.querySelector(template).content.querySelector('.element');
         this._imagePopup = imagePopup;
-        this.cardName = card.cardName;
+        this.cardName = card.name;
         this.link = card.link;
     };
     
