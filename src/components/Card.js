@@ -4,18 +4,20 @@ export class Card {
         this.template = document.querySelector(template).content.querySelector('.element');
         this._imagePopup = imagePopup;
         this.cardName = card.name;
-        this.link = card.link;
+        this.linkCard = card.link;
+        this._id = card._id
     };
     
     createCards(){
         this.cardsEl = this.template.cloneNode(true);
         this._imageCards = this.cardsEl.querySelector('.element__image');
         this._textCards = this.cardsEl.querySelector('.element__title');
-        this._imageCards.src = this.link;
-        this._imageCards.alt = this.cardName;
+        this._imageCards.setAttribute('src', this.linkCard);
+        this._imageCards.setAttribute('alt', this.cardName);
         this._textCards.textContent = this.cardName;
         this._deleteButton = this.cardsEl.querySelector('.element__trash');
         this._likeButton = this.cardsEl.querySelector('.element__like');
+        this.cardsEl.dataset.cardId = this._id;
         this._setEventListeners();
         return this.cardsEl;
     };
@@ -34,7 +36,7 @@ export class Card {
             this._likeCard(event);
         });
         this._imageCards.addEventListener('click', () => {
-            this._imagePopup(this.cardName, this.link);
+            this._imagePopup(this.cardName, this.linkCard);
         });
     }
 

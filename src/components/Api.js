@@ -28,7 +28,7 @@ export class Api{
         }).then(res => this._check(res))
     }
 
-    editProfile(nameProfile, information){
+    editProfile({nameProfile, information}){
         return fetch(`${this._url}/users/me`,{
             method: "PATCH",
             headers: {
@@ -42,7 +42,7 @@ export class Api{
         }).then(res => this._check(res))
     }
 
-    postCards(){
+    postCards({cardName, linkCard}){
         return fetch(`${this._url}/cards`,{
             method: "POST",
             headers: {
@@ -51,9 +51,24 @@ export class Api{
             },
             body: JSON.stringify({
                 name: cardName,
-                link: link
+                link: linkCard
             })
 
-        }).then(this._check())
+        }).then(res => this._check(res))
+    }
+
+    editAvatar({newProfileAvatar}){
+        return fetch(`${this._url}/users/me/avatar`, {
+            method: "PATCH",
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                avatar: newProfileAvatar,
+            })
+            
+        })
+        .then(res => this._check(res))
     }
 }

@@ -45,36 +45,39 @@ avatarPopup.setEventListeners();
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
+//Формирование карточек
+const section = new Section(item => {
+        section.addItem(createCard(item));
+    }
+,
+'.elements');
 
-let userInfo;
-let section;
+const userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle', '.profile__avatar');
+///////////////////////////////////////////////////
+//Получения данных с сервера(информация о пользователе, карточки)
 await Promise.all([api.getUserData(), api.getInitialCards()])
     .then(([user, initialCards]) => {
-        userInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle', '.profile__avatar');
         userInfo.setUserInfo({
             nameProfile: user.name,
-            information: user.about
+            information: user.about,
         })
         userInfo.changeAvatar(user.avatar);
         userInfo.setUserId(user._id)
-        section = new Section({items: initialCards,
-            renderer: item => {
-                section.addItem(createCard(item));
-            }
-        },
-        '.elements');
-        section.renderItems();
-
+        section.renderItems(initialCards);
+        
     })
     .catch((err) => {
         console.error(err);
     })
-
+//////////////////////////////////////////////////
+//Работа с формой профиля
 const editForm = new PopupWithForm('#popup-info', (list) => {
-    const {nameProfile, information} = list;
-    api.editProfile(nameProfile, information)
+    api.editProfile(list)
     .then(() => {
-        userInfo.setUserInfo({nameProfile, information});
+        userInfo.setUserInfo({
+            nameProfile: list.nameProfile,
+            information: list.information
+        });
         editForm.renderLoading(true, 'Сохранение...');
         editForm.close();
     })
@@ -90,23 +93,39 @@ buttonOpenEditProfilePopup.addEventListener('click', function(){
     profileFormValidator.resetValidation(); 
 });
 editForm.setEventListeners();
-
+//////////////////////////////////////
+//Работа с формой карточек
 const addForm = new PopupWithForm('#popup-add', (list) => {
-    const card = (list);
-    const newCard = createCard(card);
-    section.addItem(newCard);
-    addFormValidator.disableButton();
-    addForm.close();
+    api.postCards(list)
+    .then((list) => {
+        addForm.renderLoading(true, 'Создание...');
+        const newCard = createCard(list);
+
+        section.addItem(newCard);
+        addFormValidator.disableButton();
+        addForm.close();
+    }).catch(error => console.error(`Ошибка добавления карточки: ${error}`))
 })
+
 buttonOpenAddCardPopup.addEventListener('click', function(){
+    addForm.renderLoading(false);
     addForm.open();
     addFormValidator.disableButton();
 });
 addForm.setEventListeners();
-
+////////////////////////////////////////
+// Работа с формой аватара
 const avatarForm = new PopupWithForm('#popup-avatar', (list) => {
-    userInfo.changeAvatar(list)
-    avatarForm.close();
+    console.log(list);
+    api.editAvatar(list)
+    .then((list) => {
+        avatarForm.renderLoading(true, 'Сохранение...');
+        userInfo.changeAvatar(list.avatar);
+        avatarFormValidator.disableButton();
+        avatarForm.close();
+
+    })
+    .catch(error => console.error(`Ошибка редактирования аватара: ${error}`))
 })
 
 buttonAvatar.addEventListener('click', function(){
@@ -114,7 +133,8 @@ buttonAvatar.addEventListener('click', function(){
     avatarFormValidator.resetValidation();
 })
 avatarForm.setEventListeners();
-
+/////////////////////////////////////////
+// Функции 
 function handleCardClick(name, link){
     imagePopup.open({name, link});
 }
