@@ -10,8 +10,5 @@ const inputsValue = {
 const formEditProfile = document.querySelector('#form');
 const formAddCard = document.querySelector('#form-add');
 const formAvatar = document.querySelector('#form-avatar');
-const profileName = document.querySelector('.profile-info__title');
-const profileInformation = document.querySelector('.profile-info__subtitle')
-const profileAvatar = document.querySelector('.profile__avatar')
 
-export{ profileAvatar , profileName,profileInformation,formAvatar, buttonAvatar, buttonTrash, buttonOpenEditProfilePopup, buttonOpenAddCardPopup, inputsValue, formEditProfile, formAddCard};
+export{formAvatar, buttonAvatar, buttonTrash, buttonOpenEditProfilePopup, buttonOpenAddCardPopup, inputsValue, formEditProfile, formAddCard};

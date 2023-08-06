@@ -71,4 +71,36 @@ export class Api{
         })
         .then(res => this._check(res))
     }
+
+    deleteCard(cardId){
+        return fetch(`${this._url}/cards/${cardId}`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+        }).then(res => this._check(res))
+    }
+
+    likeAdd(id){
+        return fetch(`${this._url}/cards/${id}/likes`, {
+            method: "PUT",
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+        }).then(res => this._check(res))
+
+    }
+
+    likeRemove(id){
+        return fetch(`${this._url}/cards/${id}/likes`, {
+            method: "DELETE",
+            headers: {
+                authorization: this._token,
+                'Content-Type': 'application/json'
+            },
+        }).then(res => this._check(res))
+
+    }
 }
