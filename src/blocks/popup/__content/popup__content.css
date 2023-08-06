@@ -21,5 +21,10 @@
         width: 282px;
         height: 322px;
     }
-    
+    #popup-trash .popup__content{
+        height: 150px;
+    }
+    #popup-avatar .popup__content{
+        height: 242px;
+    }
 }

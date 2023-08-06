@@ -24,7 +24,7 @@ export class UserInfo{
         this._avatar.src = newProfileAvatar;    
     }
 
-    setUserId(id){
-        this._id = id;
+    setUserId(cardId){
+        this._id = cardId;
     }
 }

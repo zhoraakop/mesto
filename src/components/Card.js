@@ -1,8 +1,7 @@
-import { trashPopup } from "../pages/index.js";
-import { api } from "../pages/index.js"
+
 export class Card {
     constructor(card, template, userId, imagePopup, handleDelete, handleLike){
-        this.template = document.querySelector(template).content.querySelector('.element');
+        this._template = document.querySelector(template).content.querySelector('.element');
         this._imagePopup = imagePopup;
         this._cardName = card.name;
         this._userId = userId;
@@ -17,20 +16,21 @@ export class Card {
     };
     
     createCards(){
-        this.cardsEl = this.template.cloneNode(true);
-        this._imageCards = this.cardsEl.querySelector('.element__image');
-        this._textCards = this.cardsEl.querySelector('.element__title');
+        this._cardsEl = this._template.cloneNode(true);
+        this._imageCards = this._cardsEl.querySelector('.element__image');
+        this._textCards = this._cardsEl.querySelector('.element__title');
         this._imageCards.setAttribute('src', this._linkCard);
         this._imageCards.setAttribute('alt', this._cardName);
         this._textCards.textContent = this._cardName;
-        this._likeCounter = this.cardsEl.querySelector('.element__like-counter')
-        this._deleteButton = this.cardsEl.querySelector('.element__trash');
-        this._likeButton = this.cardsEl.querySelector('.element__like');
-        this.cardsEl.dataset.cardId = this._id;
+        this._likeCounter = this._cardsEl.querySelector('.element__like-counter')
+        this._deleteButton = this._cardsEl.querySelector('.element__trash');
+        this._likeButton = this._cardsEl.querySelector('.element__like');
+        this._cardsEl.dataset.cardId = this._id;
         this._checkLikes();
+        this._counterLikes();
         this._showButtonTrash();
         this._setEventListeners();
-        return this.cardsEl;
+        return this._cardsEl;
     };
     
     _showButtonTrash(){
@@ -39,25 +39,24 @@ export class Card {
         }
     }
 
-    _like(){
-        this._likeButton.classList.add('element__like_active')
+    _counterLikes(){
+        this._likeCounter.textContent = this._likes.length;
     }
 
-    _dislike(){
-        this._likeButton.classList.remove('element__like_active')
+    _likeActive(){
+        this._likeButton.classList.add('element__like_active')
     }
 
     _checkLikes() {
         this._likes.forEach((evt) => {
           if (this._userId == evt._id) {
-            this._like();
+            this._likeActive();
             this._isLiked = true;
           }
-    
         });
     }
     
-      _handleLikeButton() {
+    _handleLikeCard() {
         this._handleLike(
           this._isLiked,
           this._id,
@@ -66,7 +65,7 @@ export class Card {
         this._isLiked = !this._isLiked;
       }
 
-    counterLikes(count){
+    newCounterLikes(count){
         this._likeCounter.textContent = count;
     }
 
@@ -75,7 +74,7 @@ export class Card {
             this._handleDeleteCard();
         });
         this._likeButton.addEventListener('click', (event) => {
-            this._handleLikeButton();
+            this._handleLikeCard();
         });
         this._imageCards.addEventListener('click', () => {
             this._imagePopup(this._cardName, this._linkCard);
@@ -83,13 +82,9 @@ export class Card {
     }
 
     deleteCard(){
-        this.cardsEl.remove();
-        this.cardsEl = null;
+        this._cardsEl.remove();
+        this._cardsEl = null;
     };
-
-    _likeCard(event){
-        event.target.classList.toggle('element__like_active');
-    }
 
   
 }

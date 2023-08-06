@@ -82,8 +82,8 @@ export class Api{
         }).then(res => this._check(res))
     }
 
-    likeAdd(id){
-        return fetch(`${this._url}/cards/${id}/likes`, {
+    likeAdd(cardId){
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: "PUT",
             headers: {
                 authorization: this._token,
@@ -93,8 +93,8 @@ export class Api{
 
     }
 
-    likeRemove(id){
-        return fetch(`${this._url}/cards/${id}/likes`, {
+    likeRemove(cardId){
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: "DELETE",
             headers: {
                 authorization: this._token,

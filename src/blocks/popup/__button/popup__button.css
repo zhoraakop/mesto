@@ -15,16 +15,15 @@
     cursor: pointer;
 }
 
+
 .popup__button:hover{
     opacity: 0.8;
 }
 
 #popup-trash .popup__button{
-    margin: 0;
-    margin-top: 4px;
-    margin-bottom: 36px;
-    width: 358px;
+    margin-top: 33px;
 }
+
 
 @media screen and (max-width:767px) {
     .popup__button{
