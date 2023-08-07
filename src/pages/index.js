@@ -29,10 +29,6 @@ export const api = new Api({
     token: 'a81cafc2-2241-4342-a96b-9e7db132c0d1'
 });
 
-const profilePopup = new Popup('#popup-info');
-const addPopup = new Popup('#popup-add');
-const avatarPopup = new Popup('#popup-avatar');
-export const trashPopup = new Popup('#popup-trash');
 const imagePopup = new PopupWithImage('#popup-image');
 const profileFormValidator  = new FormValidator(validators, formEditProfile);
 export const addFormValidator = new FormValidator(validators, formAddCard);
@@ -40,11 +36,7 @@ const avatarFormValidator = new FormValidator(validators, formAvatar);
 
 /////////////////////////////////////////
 
-profilePopup.setEventListeners();
-addPopup.setEventListeners();
 imagePopup.setEventListeners();
-avatarPopup.setEventListeners();
-trashPopup.setEventListeners();
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -83,20 +75,20 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 //Работа с формой профиля
 
 const editForm = new PopupWithForm('#popup-info', (list) => {
+    editForm.renderLoading(true, 'Сохранение...')
     api.editProfile(list)
     .then(() => {
         userInfo.setUserInfo({
             nameProfile: list.nameProfile,
             information: list.information
         });
-        editForm.renderLoading(true, 'Сохранение...');
         editForm.close();
     })
     .catch(error => console.error(`Ошибка редакторовния профиля: ${error}`))
+    .finally(() => editForm.renderLoading(false))
 });
 
 buttonOpenEditProfilePopup.addEventListener('click', function(){
-    editForm.renderLoading(false)
     editForm.open();
     const profileData = userInfo.getUserInfo();
     inputsValue.nameProfile.value = profileData.nameProfile;
@@ -109,19 +101,18 @@ editForm.setEventListeners();
 //Работа с формой карточек
 
 const addForm = new PopupWithForm('#popup-add', (list) => {
+    addForm.renderLoading(true, 'Создание...');
     api.postCards(list)
     .then((list) => {
-        addForm.renderLoading(true, 'Создание...');
         const newCard = createCard(list);
         section.addItem(newCard);
-        addFormValidator.disableButton();
         addForm.close();
     })
     .catch(err => console.error(`Ошибка добавления карточки: ${err}`))
+    .finally(() => addForm.renderLoading(false))
 })
 
 buttonOpenAddCardPopup.addEventListener('click', function(){
-    addForm.renderLoading(false);
     addForm.open();
     addFormValidator.disableButton();
 });
@@ -131,14 +122,15 @@ addForm.setEventListeners();
 // Работа с формой аватара
 
 const avatarForm = new PopupWithForm('#popup-avatar', (list) => {
+    avatarForm.renderLoading(true, 'Сохранение...');
     api.editAvatar(list)
     .then((list) => {
-        avatarForm.renderLoading(true, 'Сохранение...');
         userInfo.changeAvatar(list.avatar);
         avatarFormValidator.disableButton();
         avatarForm.close();
     })
     .catch(err => console.error(`Ошибка редактирования аватара: ${err}`))
+    .finally(() => avatarForm.renderLoading(false))
 })
 
 buttonAvatar.addEventListener('click', function(){

@@ -61,11 +61,11 @@ export class Card {
           this._isLiked,
           this._id,
         );
-        this._likeButton.classList.toggle('element__like_active');
         this._isLiked = !this._isLiked;
-      }
-
+    }
+    
     newCounterLikes(count){
+        this._likeButton.classList.toggle('element__like_active');
         this._likeCounter.textContent = count;
     }
 
